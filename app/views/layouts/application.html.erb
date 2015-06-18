@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GlobalFeeds</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= yield :javascript_includes %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="<%=root_url%>">Live Feeds</a>
+      </div>
+    </div>
+  </div>
+  <%=link_to '<i class="icon-circle-arrow-up scroll-to-top" style="font-size:80px;"></i>'.html_safe,'#',onclick: 'goToTop()',class: 'scroll-up'%> 
+  <div class="container" align="center">
+    <div class="row">
+        <div class="span1"></div>
+        <div class="span10"><%= yield %></div>
+        <div class="span1"></div>        
+    </div>
+  </div>
+</body>
+</html>

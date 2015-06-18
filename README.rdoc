@@ -1,0 +1,45 @@
+GLOBAL FEEDS
+
+A web application for parsing the feed xml of BBC News channel. 
+xml link => "http://feeds.bbci.co.uk/news/rss.xml"
+When you enter this xml link in the field provided on the application home, you will be provided with the home link of the news channel, clicking on that home link takes you to the latest news from that channel.
+
+UPCOMING UPDATES :
+  -Images along with the news from news channel.
+  -Allowing xml from other news channel.
+
+USAGE :
+
+* Ruby version ~> 1.9.3
+
+* Rails version ~> 4.0
+
+Steps to run application
+
+1. bundle install
+
+2. rake db:migrate
+
+3. rails s
+
+Server started in the development mode, go to the browser and clear the address bar and type "localhost:3000"
+
+Features: 
+
+1. After providing URL and clicking explore displays a feed containing channel name, last updated time and a homepage link(source link).
+
+2. On clicking up the channel name you will be shown up with all the recent feeds of that channel sorted according to the recent published first.
+
+3. On clicking up the feed name a new tab will open that will redirect to the actual news page.
+
+4. Errors in case of incorrect URL provided.
+
+Points to keep in mind:
+
+1. RSS link provided must have same name tags as used by "http://feeds.bbci.co.uk/news/rss.xml" otherwise you might encounter unexpected behaviour.
+
+Gems used:
+
+1. feedjira and its dependencies
+2. twitter-bootstrap-rails and its dependencies
+

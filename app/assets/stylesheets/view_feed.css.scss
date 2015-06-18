@@ -1,0 +1,54 @@
+// Place all the styles related to the view_feed controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  background-color: #f8f8f8;
+}
+.feeds{
+  text-align: left;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.content{
+  padding-top: 10px;
+  padding-bottom: 10px
+}
+.footer{
+  margin-left: 0%;
+  padding-top: 5px;
+  border-top: 1px solid grey;
+  background-color: #D8D8D8;
+}
+.source {
+  text-align: left;
+}
+.desc-img{
+  height: 100px;
+  max-width: 150px;
+}
+.inner{
+  display: none;
+}
+.scroll-to-top{
+  margin-left: 90%;
+  margin-right: auto;
+  margin-top: 30%;
+  position: fixed;
+}
+.scroll-up{
+  text-decoration: none !important;
+}
+@media (min-width: 768px) {
+  .errors{
+    margin-left: 20%;
+  }
+  .feeds{
+    margin-left: 20%;
+  }
+  .source {
+    text-align: right;
+  }
+  .blog-head{
+    margin-left: 5%;
+  }
+}

@@ -1,0 +1,65 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "view_feed.js" %>
+<% end %>
+<div class="input-group span10">
+    <div class="form-inline">
+      <%= form_tag(root_url,method: "get" ) do %>
+      <%= url_field_tag('url',nil, :class=> "span8", :placeholder=> "Enter RSS URL") %> 
+      <%= button_tag(type: "submit", class: "btn btn-success") do %>
+       Explore 
+             <i class="icon-search"></i>
+      <% end %>
+    <% end %>
+    </div>
+</div>
+<div class="errors span6">
+  <%if @errors
+    @errors.each do|err|%>
+    <div class="alert alert-danger alert-dismissible" role="alert"><%=err%>
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <%end%>
+  <%end%>
+</div>
+
+<%if @feeds%>
+  <div class="outer">
+    <div class="thumbnail feeds span6">
+      <div class="row title lead">
+        <span class="span6"><%=link_to @feeds.title,'#',onclick: 'showFeeds()'%></span>
+      </div>
+      <div class="row content">
+        <img class="span2 desc-img thumbnail" src="/assets/default.jpg" alt="RSS">
+        <span class="span3"><%=@feeds.description%></span>
+      </div>
+      <div class="row footer">
+        <%if @feeds.last_modified%>
+        <span class="span3">Updated on: <small><%=@feeds.last_modified.to_date.strftime("%b, %-d, %Y")%></span></small>
+        <%end%>
+        <span class="span2 source">Source: <small><%=link_to 'Click here',@feeds.url, target: "_blank"%></span></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner">
+    <div class="span9 blog-head alert alert-info"><h3><%=@feeds.title%></h3></div>
+  <%@feeds.entries.each do|feed|%>
+    <div class="thumbnail feeds span6">
+      <div class="row title lead">
+        <input type="hidden" class="feed-page-url" value="<%=feed.entry_id%>">
+        <span class="span6"><%=link_to feed.title,feed.url,target: "_blank"%></span>
+      </div>
+      <div class="row content">
+        <img class="span2 desc-img thumbnail" src="/assets/default.jpg" alt="RSS">
+        <span class="span3"><%=feed.summary%></span>
+      </div>
+      <div class="row footer">
+        <%if feed.published%>
+        <span class="span3">Published on: <small><%=feed.published.to_date.strftime("%b, %-d, %Y")%></span></small>
+        <%end%>
+        <span class="span2 source">Source: <small><%=link_to 'Click here',@feeds.url, target: "_blank"%></span></small>
+      </div>
+    </div>
+  <%end%>
+  </div>
+<%end%>
